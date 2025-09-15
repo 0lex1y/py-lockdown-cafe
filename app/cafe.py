@@ -16,7 +16,8 @@ class Cafe:
         expiration = None
         if isinstance(vaccine, dict):
             expiration = vaccine.get("expiration_date")
-        if not isinstance(expiration, datetime.date) or expiration < datetime.date.today():
+        if (not isinstance(expiration, datetime.date)
+                or expiration < datetime.date.today()):
             raise OutdatedVaccineError("Visitor's vaccine is outdated")
         if not visitor.get("wearing_a_mask", False):
             raise NotWearingMaskError("Visitor is not wearing a mask")
